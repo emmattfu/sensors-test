@@ -1,0 +1,47 @@
+{
+  "sensors": [
+    {
+      "id": "dae96c8a-016c-4fc7-8c3a-26e754f1bdc3",
+      "name": "sensor-1",
+      "type": "pressure",
+      "values": [10, 20, 15, 14, 13, 22],
+      "isActive": false
+    },
+    {
+      "id": "3d682985-232f-4c3f-ba5c-c7435d33fba7",
+      "name": "sensor-2",
+      "type": "humidity",
+      "isActive": false
+    },
+    {
+      "id": "5994e247-2f12-4c29-94e4-3934562e3e70",
+      "name": "sensor-3",
+      "type": "humidity",
+      "isActive": true
+    },
+    {
+      "id": "1d6ba3ee-0de8-4b9b-a0c3-f528a348c66e",
+      "name": "sensor-4",
+      "type": "pressure",
+      "isActive": true
+    },
+    {
+      "id": "e85424b4-1062-4db6-a636-b4e88037e795",
+      "name": "sensor-5",
+      "type": "temperature",
+      "isActive": true
+    },
+    {
+      "id": "e6ec5c7d-e4e4-41e0-9149-db4883f3d27b",
+      "name": "sensor-6",
+      "type": "temperature",
+      "isActive": false
+    },
+    {
+      "id": "d1a02098-63fb-42bc-9330-d44b797e1656",
+      "name": "sensor-7",
+      "type": "humidity",
+      "isActive": false
+    }
+  ]
+}
