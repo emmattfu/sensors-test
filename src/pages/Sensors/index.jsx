@@ -4,7 +4,8 @@ import NewSensorCard from "../../components/NewSensorCard";
 import SensorCard from "../../components/SensorCard";
 import { sensorsSelector } from "../../store/selectors";
 import { getSensorsLoading } from "../../store/slices/sensorsSlice";
-import { StyledBlockWrapper } from "../../styled";
+import { MAIN_COLOR, StyledBlockWrapper, StyledLoading } from "../../styled";
+import Loader from "react-loader-spinner";
 
 const Sensors = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,14 @@ const Sensors = () => {
   }, [dispatch]);
 
   const sensors = useSelector(sensorsSelector);
+
+  if (!sensors.length) {
+    return (
+      <StyledLoading>
+        <Loader type='Puff' color={MAIN_COLOR} height={400} width={400} />
+      </StyledLoading>
+    );
+  }
 
   return (
     <>

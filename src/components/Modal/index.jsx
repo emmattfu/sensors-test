@@ -5,9 +5,9 @@ import {
   StyledOverlay,
   StyledModalHeader,
   StyledTimesIcon,
+  StyledModalTitle,
 } from "./styled";
 import PropTypes from "prop-types";
-
 
 const Modal = ({ children, open, title, close }) => {
   if (!open) return null;
@@ -17,7 +17,7 @@ const Modal = ({ children, open, title, close }) => {
       <StyledOverlay />
       <StyledModal>
         <StyledModalHeader>
-          <h2>{title}</h2>
+          <StyledModalTitle>{title}</StyledModalTitle>
           <StyledTimesIcon onClick={close} />
         </StyledModalHeader>
 

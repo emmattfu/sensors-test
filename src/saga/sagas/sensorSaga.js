@@ -1,5 +1,6 @@
-import { takeEvery, put } from "redux-saga/effects";
-import { BASE_URL, ENDPOINTS, SENSORS } from "../../api/endpoints";
+import { takeEvery, put, call } from "redux-saga/effects";
+import { fetchData } from "../../api/api";
+import { SENSORS } from "../../api/endpoints";
 import {
   getSensorError,
   getSensorLoading,
@@ -7,17 +8,19 @@ import {
 } from "../../store/slices/sensorSlice";
 
 function* onGetSensor({ payload }) {
-
   try {
-    const response = yield fetch(`${BASE_URL}${ENDPOINTS[SENSORS].uri}/${payload}`);
-    const sensor = yield response.json();
-    console.log(1)
+    const sensor = yield call(fetchData, {
+      method: "GET",
+      endpoint: SENSORS,
+      id: payload,
+    });
+
     yield put(getSensorSuccessed(sensor));
   } catch (error) {
     yield put(getSensorError(error));
   }
 }
 
-export default function* getSensor() {
+export default function* addSensor() {
   yield takeEvery(getSensorLoading, onGetSensor);
 }

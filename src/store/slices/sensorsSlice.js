@@ -20,12 +20,14 @@ const sensorsSlice = createSlice({
       state.error = action.payload;
     },
     updateSensors: (state, action) => {
-      console.log(action.payload);
       const index = state.sensors.findIndex(
         (el) => el.id === action.payload.id
       );
 
       state.sensors.splice(index, 1, action.payload);
+    },
+    addSensor: (state, action) => {
+      state.sensors.push(action.payload);
     },
   },
 });
@@ -35,6 +37,7 @@ export const {
   getSensorsSuccessed,
   getSensorsError,
   updateSensors,
+  addSensor,
 } = sensorsSlice.actions;
 
 export default sensorsSlice.reducer;

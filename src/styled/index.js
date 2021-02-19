@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const MAIN_COLOR = "#1877f2";
 export const DANGER = "#DC3545";
+export const SECONDARY_COLOR = "#6C757D";
 
 export const StyledApp = styled.div`
   display: flex;
@@ -9,6 +10,15 @@ export const StyledApp = styled.div`
   max-width: 1280px;
   margin: 0 auto;
   padding: 50px 10px;
+`;
+
+export const StyledLoading = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 200px;
 `;
 
 export const StyledButton = styled.button`
@@ -27,6 +37,10 @@ export const StyledButton = styled.button`
   &:hover {
     background-color: ${({ color }) => color || MAIN_COLOR};
     color: white;
+  }
+
+  &:disabled {
+    background-color: ${SECONDARY_COLOR};
   }
 `;
 

@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { sensorSelector } from "../../store/selectors";
 import { getSensorLoading } from "../../store/slices/sensorSlice";
+import Loader from "react-loader-spinner";
+import { MAIN_COLOR, StyledLoading } from "../../styled";
 
 const Sensor = () => {
   const { id } = useParams();
@@ -11,12 +13,15 @@ const Sensor = () => {
   const sensor = useSelector(sensorSelector);
 
   useEffect(() => {
-    console.log(1);
     dispatch(getSensorLoading(id));
   }, [dispatch, id]);
 
   if (!sensor) {
-    return <h2>Loading</h2>;
+    return (
+      <StyledLoading>
+        <Loader type='Puff' color={MAIN_COLOR} height={400} width={400} />
+      </StyledLoading>
+    );
   }
 
   return (
@@ -32,12 +37,12 @@ const Sensor = () => {
             {
               label: `Sensor ${sensor.id}`,
               data: sensor.values.map((val) => val),
-              borderColor: "#3333ff",
+              borderColor: `${MAIN_COLOR}`,
               fill: true,
             },
           ],
         }}
-        options= {{ scales: {yAxes: [{ticks: {beginAtZero: true}}]} }}
+        options={{ scales: { yAxes: [{ ticks: { beginAtZero: true } }] } }}
       />
     </>
   );

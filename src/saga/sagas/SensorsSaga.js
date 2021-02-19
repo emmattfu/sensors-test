@@ -1,5 +1,6 @@
-import { takeEvery, put } from "redux-saga/effects";
-import { BASE_URL, ENDPOINTS, SENSORS } from "../../api/endpoints";
+import { takeEvery, put, call } from "redux-saga/effects";
+import { fetchData } from "../../api/api";
+import { SENSORS } from "../../api/endpoints";
 import {
   getSensorsError,
   getSensorsLoading,
@@ -8,8 +9,7 @@ import {
 
 function* onGetSensors() {
   try {
-    const response = yield fetch(`${BASE_URL}${ENDPOINTS[SENSORS].uri}`);
-    const sensors = yield response.json();
+    const sensors = yield call(fetchData, { method: "GET", endpoint: SENSORS });
 
     yield put(getSensorsSuccessed(sensors));
   } catch (error) {

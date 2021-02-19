@@ -1,5 +1,6 @@
 import { FaTimes } from "react-icons/fa";
 import styled from "styled-components";
+import { DANGER, MAIN_COLOR } from "../../styled";
 
 export const StyledModal = styled.div`
   position: fixed;
@@ -8,14 +9,12 @@ export const StyledModal = styled.div`
   transform: translate(-50%, -50%);
   z-index: 1000;
   width: 500px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: white;
   padding: 2rem 1rem;
-  backdrop-filter: blur(40px);
   margin-bottom: 2rem;
-  border: 2px solid transparent;
+  border: 2px solid ${MAIN_COLOR};
+  border-radius: 5px;
   background-clip: padding-box;
-  border-radius: 1.5rem;
-  color: white;
 `;
 
 export const StyledOverlay = styled.div`
@@ -28,6 +27,10 @@ export const StyledOverlay = styled.div`
   z-index: 1000;
 `;
 
+export const StyledModalTitle = styled.h2`
+  margin: 0;
+`;
+
 export const StyledModalHeader = styled.div`
   display: flex;
   flex-direction: row;
@@ -37,4 +40,5 @@ export const StyledModalHeader = styled.div`
 export const StyledTimesIcon = styled(FaTimes)`
   font-size: 1.5rem;
   cursor: pointer;
+  color: ${DANGER};
 `;

@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "../saga/rootSaga";
+import addSensorSlice from "./slices/addSensorSlice";
 import modalSlice from "./slices/modalSlice";
 import sensorSlice from "./slices/sensorSlice";
 import sensorsSlice from "./slices/sensorsSlice";
@@ -13,7 +14,8 @@ const store = configureStore({
     sensors: sensorsSlice,
     sensor: sensorSlice,
     switchSensor: switchSensorSlice,
-    modal: modalSlice
+    addSensor: addSensorSlice,
+    modal: modalSlice,
   },
   middleware: [sagaMiddleware],
 });

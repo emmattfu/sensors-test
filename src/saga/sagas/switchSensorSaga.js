@@ -1,26 +1,23 @@
-import { takeEvery, put } from "redux-saga/effects";
-import { BASE_URL, ENDPOINTS, SENSORS } from "../../api/endpoints";
+import { takeEvery, put, call } from "redux-saga/effects";
+import { SENSORS } from "../../api/endpoints";
 import {
   switchSensorError,
   switchSensorLoading,
   switchSensorSuccessed,
 } from "../../store/slices/switchSensorSlice";
 import { updateSensors } from "../../store/slices/sensorsSlice";
+import { fetchData } from "../../api/api";
 
 function* onSwitchSensor({ payload }) {
-  try {
-    const response = yield fetch(
-      `${BASE_URL}${ENDPOINTS[SENSORS].uri}/${payload.id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ ...payload, isActive: !payload.isActive }),
-      }
-    );
+  const body = JSON.stringify({ ...payload, isActive: !payload.isActive });
 
-    const updatedSensor = yield response.json();
+  try {
+    const updatedSensor = yield call(fetchData, {
+      method: "PUT",
+      body,
+      id: payload.id,
+      endpoint: SENSORS,
+    });
 
     yield put(switchSensorSuccessed());
     yield put(updateSensors(updatedSensor));
