@@ -19,6 +19,9 @@ const sensorSlice = createSlice({
       state.status = "error";
       state.error = action.payload;
     },
+    clearPrevSensor: (state) => {
+      state.sensor = null
+    }
   },
 });
 

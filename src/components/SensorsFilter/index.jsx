@@ -10,6 +10,7 @@ const sensors = [
 ];
 
 const SensorsFilter = () => {
+  
   return (
     <StyledSensorsFilter>
       {sensors.map((sensor) => (

@@ -6,17 +6,18 @@ import {
   getSensorSuccessed,
 } from "../../store/slices/sensorSlice";
 
-function* onGetSensos({ payload }) {
-  try {
-    const response = yield fetch(`${BASE_URL}${ENDPOINTS[SENSORS].uri}`);
-    const sensors = yield response.json();
+function* onGetSensor({ payload }) {
 
-    yield put(getSensorSuccessed(sensors));
+  try {
+    const response = yield fetch(`${BASE_URL}${ENDPOINTS[SENSORS].uri}/${payload}`);
+    const sensor = yield response.json();
+    console.log(1)
+    yield put(getSensorSuccessed(sensor));
   } catch (error) {
     yield put(getSensorError(error));
   }
 }
 
-export default function* getSensors() {
-  yield takeEvery(getSensorLoading, onGetSensos);
+export default function* getSensor() {
+  yield takeEvery(getSensorLoading, onGetSensor);
 }

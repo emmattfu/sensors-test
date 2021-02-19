@@ -42,7 +42,7 @@ const SensorCard = ({ sensor }) => {
         value={sensor.id}
         color={sensor.isActive ? DANGER : MAIN_COLOR}
       >
-        {sensor.isActive ? "Disable" : "Enable"}
+        {sensor.isActive ? "Enable" : "Disable"}
       </StyledButton>
     </StyledSensorCard>
   );
